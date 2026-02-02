@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Simple Chatbot</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background: #f4f4f4;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+    }
+    .chatbox {
+      width: 300px;
+      background: #fff;
+      border-radius: 8px;
+      padding: 10px;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    .messages {
+      height: 200px;
+      overflow-y: auto;
+      border: 1px solid #ddd;
+      padding: 5px;
+      margin-bottom: 10px;
+    }
+    .message {
+      margin: 5px 0;
+    }
+    .user {
+      text-align: right;
+      color: blue;
+    }
+    .bot {
+      text-align: left;
+      color: green;
+    }
+    input {
+      width: 75%;
+      padding: 5px;
+    }
+    button {
+      width: 20%;
+      padding: 5px;
+    }
+  </style>
+</head>
+<body>
+
+<div class="chatbox">
+  <div class="messages" id="messages"></div>
+  <input type="text" id="userInput" placeholder="Type a message..." />
+  <button onclick="sendMessage()">Send</button>
+</div>
+
+<script>
+  function sendMessage() {
+    const input = document.getElementById("userInput");
+    const message = input.value.trim();
+    if (!message) return;
+
+    addMessage(message, "user");
+    input.value = "";
+
+    setTimeout(() => {
+      const reply = botReply(message);
+      addMessage(reply, "bot");
+    }, 500);
+  }
+
+  function addMessage(text, sender) {
+    const messages = document.getElementById("messages");
+    const div = document.createElement("div");
+    div.className = "message " + sender;
+    div.textContent = text;
+    messages.appendChild(div);
+    messages.scrollTop = messages.scrollHeight;
+  }
+
+  function botReply(message) {
+    message = message.toLowerCase();
+
+    if (message.includes("hello") || message.includes("hi")) {
+      return "Hello! 👋";
+    } else if (message.includes("how are you")) {
+      return "I'm just code, but I'm doing great 😄";
+    } else if (message.includes("bye")) {
+      return "Goodbye! 👋";
+    } else {
+      return "You said: " + message;
+    }
+  }
+</script>
+
+</body>
+</html>
