@@ -1,0 +1,62 @@
+create templates folder in parent folder
+
+add html doc into templates folder
+add it in views.py
+from django.shortcuts import render
+def fun_name(request):
+	return render(request,"index.html")
+
+add configuration in settings.py
+in templates , add folder name which is storing html pages
+
+
+create static folder in parent folder
+
+configure static folder in setings.py
+
+in settings.py:
+add,
+STATICFILES_DIRS = [ BASE_DIRS / "static",]
+
+modify paths of static files in html 
+
+
+ADMIN /CRUD IN DJANGO:
+
+creating app:
+
+django-admin startapp home
+
+Django orm helpful website
+
+give me code for model with name "home" and properties "title & image" in Django
+
+
+creating app with Django,
+
+python manage.py startapp polls
+
+
+1>>Define models
+
+what type of data each file hold,
+
+2>> migrating models,
+python manage.py makemigrations polls
+
+3>>python manage.py migrate
+
+4>>sql migrations, to check sql is migrated
+
+python manage.py sqlmigrate polls 0001
+
+
+
+
+Django superuser:
+python manage.py createsupervisor
+
+
+
+
+
